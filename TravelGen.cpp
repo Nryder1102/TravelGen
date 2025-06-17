@@ -375,7 +375,6 @@ int main()
         }
         //Decorative line
         cout << "-----------------------------------------" << endl;
-
         wait(1000);
 
         //Lock the user in until they choose a valid choice. DON'T PUT LETTERS
@@ -404,7 +403,7 @@ int main()
         //Load Bar
         cout << "Sailing" << flush;
         for(int i = 0; i < rand()%(7-3)+3; i++){
-            wait(1750);
+            wait(1450);
             cout << "." << flush;
         }
         cout << endl;
@@ -416,6 +415,8 @@ int main()
         //If the roll is in the list of Evil Numbers, roll an Evil Event and disable Safe Message
         for(int num : evilNum){
             if(incident == num){
+                cout << "\nCaptain." << endl;
+                wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(10);
                 evilEvents[evilEvent-1]();
@@ -487,8 +488,6 @@ void evilEvent1(){
     //You have 10 rounds to kill the Siren before it takes off, bringing everyone who fell under it's song with it
     //An Expedition may be launched to regain the stolen, if any, people
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         cout << "Siren!" << endl;
     }
     else{
@@ -502,8 +501,6 @@ void evilEvent2(){
     //1d6+2 Tentacles attack randomly on the deck
     //You have 10 rounds to kill all the tentacles, before the ship takes 1HP damage for each remaining tentacle
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         cout << "Kraken!" << endl;
     }
     else{
@@ -515,8 +512,6 @@ void evilEvent2(){
 void evilEvent3(){
     //2d6 Giant Rats appear in random rooms across the ship, and you have 10 rounds to kill all of them, otherwise, you lose 5% of your food for each remaining rat, lose 10% food 
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         cout << "It's bad." << endl;
         wait(450);
         cout << "We've" << flush;
@@ -543,26 +538,29 @@ void evilEvent3(){
 
 //Dragon Recruitment
 void evilEvent4(){
-    //One of your specialists got an amazing job offer at your last stop, and has left your crew, along with 30% total of all your various resources. These resources and the specialist join the dragon's hoard, and can be regained if the dragon is defeated
+    //One of your specialists got an amazing job offer at your last stop, and has left your crew, along with 5%-25% of all your various resources. These resources and the specialist join the dragon's hoard, and can be regained if the dragon is defeated
+
+    int percent = rand()%(25-5)+5;
+
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         cout << "Better Job Offer!" << endl;
     }
     else{
         cout << "Better Job Offer" << endl;
     }
 
-    int max = rand()%(30-5)+5;
-    vector<string> tempResource = {"food","money","crew","wood","metal","research"};
+    cout << percent << " loss" << endl;
+
+    
+
+    
+    
 }
 
 //Lost - Complete
 void evilEvent5(){
     //You got lost at sea, rerolling your destination, and adding 1d4 days to your journey
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         cout << " It's time to finally admit it." << flush;
         wait(1500);
         cout <<" You," << flush;
@@ -620,8 +618,6 @@ void evilEvent5(){
 void evilEvent6(){
     //One of your specialists has gone mad! Either put them down, or find some way to negotiate/heal them, otherwise, the ship takes 3 damage, and the room the specialist was assigned to is damaged
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         cout << "Uh oh, Sabotage" << endl;
     }
     else{
@@ -635,8 +631,6 @@ void evilEvent7(){
     //Roll a wisdom save, and get various levels of exhaustion for how bad you roll, these are in effect for the next node you land on
     //5 Levels: <0; 4 Levels: <5; 3 Levels: <10; 2 Levels: <15; 1 Level: <20; No levels: 20 or higher
     if(evilDesc == true){
-        cout << "\nCaptain." << endl;
-        wait(2000);
         cout << "You've" << flush;
         textDelay("been getting reports of crew members seeing things at night.",150);
         wait(500);
@@ -684,8 +678,6 @@ void evilEvent7(){
 //Rot
 void evilEvent8(){
     if(evilDesc == true){
-        cout << "\nCaptain." << flush;
-        wait(2000);
         //Things are not looking good. You've just gotten a report that rot has been found spreading throughout your food stores. Thankfully, your crew caught it early, but you've already lost several days worth of food. The rot must be stopped before it can spread any further. What will you do, Captain?
         cout << "Rot" << endl;
     }
@@ -699,8 +691,6 @@ void evilEvent9(){
     //2d4 pirate ships attack, with the pirates getting an ambush round if during night
     if(select(hiddenChance) == "true"){
         if(evilDesc == true){
-            cout << "\nCaptain." << flush;
-            wait(2000);
             cout << "Pirate Raid Night" << endl;
         }
         else{
@@ -708,8 +698,6 @@ void evilEvent9(){
         }
     }else{
         if(evilDesc == true){
-            cout << "\nCaptain." << flush;
-            wait(2000);
             //Things are not going well for you, at the moment. Everything was going fine, at first, until one of your deckhands ran into the bridge, shouting "Captain! Captain! Look! On the horizon! Quick!" You quickly begin scanning the horizon, until finally, you see them. 2d4 pirate ships sailing straight for you. There's no way out. It's a fight!
             cout << "Pirate Raid Day" << endl;
         }
@@ -723,8 +711,6 @@ void evilEvent9(){
 void evilEvent10(){
     //Need to succeed on a DC14 Dexterity Save or the ship will take 5 DMG
     if(evilDesc == true){
-        cout << "Captain." << endl;
-        wait(2000);
         cout << "You" << flush;
         textDelay("are woken from your slumber by a banging on your door.",150); 
         cout << endl;

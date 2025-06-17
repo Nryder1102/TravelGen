@@ -1,8 +1,0 @@
-Speed Up?
-false
-Suggestions?
-true
-Hidden Events?
-false
-Evil Descriptions?
-true
