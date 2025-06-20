@@ -419,6 +419,7 @@ int main()
                 wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(10);
+                //evilEvent4();
                 evilEvents[evilEvent-1]();
                 string t;
                 cout << "Continue?\n> ";
@@ -549,7 +550,7 @@ void evilEvent4(){
         cout << "Better Job Offer" << endl;
     }
 
-    cout << percent << " loss" << endl;
+    cout << percent << "% loss of resources." << endl;
 
     
 
@@ -616,7 +617,7 @@ void evilEvent5(){
 
 //Madness/Sabotage
 void evilEvent6(){
-    //One of your specialists has gone mad! Either put them down, or find some way to negotiate/heal them, otherwise, the ship takes 3 damage, and the room the specialist was assigned to is damaged
+    //One of your specialists has gone mad! Either put them down, or find some way to negotiate/heal them, otherwise, the ship takes 3 damage, and the room the specialist was assigned to is damaged by 1 level
     if(evilDesc == true){
         cout << "Uh oh, Sabotage" << endl;
     }
@@ -677,6 +678,9 @@ void evilEvent7(){
 
 //Rot
 void evilEvent8(){
+
+    int percent = rand()%(25-5)+5;
+
     if(evilDesc == true){
         //Things are not looking good. You've just gotten a report that rot has been found spreading throughout your food stores. Thankfully, your crew caught it early, but you've already lost several days worth of food. The rot must be stopped before it can spread any further. What will you do, Captain?
         cout << "Rot" << endl;
@@ -684,6 +688,8 @@ void evilEvent8(){
     else{
         cout << "Rot" << endl;
     }
+
+    cout << percent << "% loss of food." << endl;
 }
 
 //Pirate Raid
