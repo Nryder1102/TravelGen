@@ -419,7 +419,7 @@ int main()
                 wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(10);
-                //evilEvent4();
+                //evilEvent8();
                 evilEvents[evilEvent-1]();
                 string t;
                 cout << "Continue?\n> ";
@@ -676,20 +676,44 @@ void evilEvent7(){
     }
 }
 
-//Rot
+//Embezzlement
 void evilEvent8(){
+    //A specialist was caught embezzling money, unfortunately, the money is gone, and so is the specialist. Pass an averaged investigation check, DC of whatever the specialist rolled for Stealth to find them and get some of your money back, otherwise, it's gone, and so is the specialist
 
-    int percent = rand()%(25-5)+5;
+    int percent = rand()%(15-5)+5;
 
     if(evilDesc == true){
-        //Things are not looking good. You've just gotten a report that rot has been found spreading throughout your food stores. Thankfully, your crew caught it early, but you've already lost several days worth of food. The rot must be stopped before it can spread any further. What will you do, Captain?
-        cout << "Rot" << endl;
+        cout << "You" << flush;
+        textDelay("are relaxing in your quarters, done with work for the day, when there's a knock at your door.",250);
+        wait(250);
+        cout << endl << "\"Captain!" << flush;
+        textDelay("we've got a problem!\"",100);
+        wait(500);
+        cout << endl << "You" << flush;
+        textDelay("hear through the door.",250);
+        wait(200);
+        cout << endl << "\"Someone's" << flush;
+        textDelay("been fudging the books!\"",100);
+        wait(50);
+        cout << endl << "\"Looks" << flush;
+        textDelay("like it's been happening for a while,",150);
+        string moneyLine = "we're missing a whole " + to_string(percent) + "% of our money, Captain!\"";
+        textDelay(moneyLine,50);
+        wait(200);
+        cout << endl << "\"We" << flush;
+        textDelay("need to find them!\"",250);
+        cout << endl << "\"Before" << flush;
+        textDelay("it's too late!\"",500);
+        cout << endl;
+
+
     }
     else{
-        cout << "Rot" << endl;
+        cout << "Embezzlement" << endl;
+        cout << percent << "% loss of money." << endl;
     }
 
-    cout << percent << "% loss of food." << endl;
+    
 }
 
 //Pirate Raid
