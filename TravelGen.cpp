@@ -419,7 +419,7 @@ int main()
                 wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(10);
-                //evilEvent8();
+                //evilEvent6();
                 evilEvents[evilEvent-1]();
                 string t;
                 cout << "Continue?\n> ";
@@ -501,15 +501,20 @@ void evilEvent1(){
 void evilEvent2(){
     //1d6+2 Tentacles attack randomly on the deck
     //You have 10 rounds to kill all the tentacles, before the ship takes 1HP damage for each remaining tentacle
+
+    int number = roll(6)+2;
+
     if(evilDesc == true){
         cout << "Kraken!" << endl;
+        //cout << number << " tentacles spawned." << endl;
     }
     else{
         cout << "Kraken" << endl;
+        //cout << number << " tentacles spawned." << endl;
     }
 }
 
-//Giant Rats Eat Your Food
+//Giant Rats Eat Your Food - Complete
 void evilEvent3(){
     //2d6 Giant Rats appear in random rooms across the ship, and you have 10 rounds to kill all of them, otherwise, you lose 5% of your food for each remaining rat, lose 10% food 
     if(evilDesc == true){
@@ -615,11 +620,31 @@ void evilEvent5(){
     
 }
 
-//Madness/Sabotage
+//Madness/Sabotage - Complete
 void evilEvent6(){
     //One of your specialists has gone mad! Either put them down, or find some way to negotiate/heal them, otherwise, the ship takes 3 damage, and the room the specialist was assigned to is damaged by 1 level
     if(evilDesc == true){
-        cout << "Uh oh, Sabotage" << endl;
+        cout << "You" << flush;
+        textDelay("are on the bridge of your vessel,", 150);
+        wait(400);
+        textDelay(" performing your duties when one of the crew runs up to you.",150);
+        wait(500);
+        cout << endl << "\"Captain!" << flush;
+        wait(500);
+        textDelay("It's not good!",100);
+        wait(500);
+        textDelay("One of the specialists has gone mad!\"",50);
+        wait(1500);
+        cout << endl << "\"They're" << flush;
+        textDelay("threatening to ruin their workplace,",200);
+        textDelay("unless you go hear them out!\"",100);
+        wait(1500);
+        cout << endl << "Better" << flush;
+        textDelay("go see what they want,",250);
+        wait(200);
+        cout << " Captain," << flush;
+        textDelay("before something drastic happens.",500);
+        cout << endl;
     }
     else{
         cout << "Sabotage" << endl;
@@ -676,7 +701,7 @@ void evilEvent7(){
     }
 }
 
-//Embezzlement
+//Embezzlement - Complete
 void evilEvent8(){
     //A specialist was caught embezzling money, unfortunately, the money is gone, and so is the specialist. Pass an averaged investigation check, DC of whatever the specialist rolled for Stealth to find them and get some of your money back, otherwise, it's gone, and so is the specialist
 
@@ -719,6 +744,9 @@ void evilEvent8(){
 //Pirate Raid
 void evilEvent9(){
     //2d4 pirate ships attack, with the pirates getting an ambush round if during night
+
+    int number = roll(4) + roll(4);
+
     if(select(hiddenChance) == "true"){
         if(evilDesc == true){
             cout << "Pirate Raid Night" << endl;
@@ -735,6 +763,9 @@ void evilEvent9(){
             cout << "Pirate Raid Day" << endl;
         }
     }
+
+    //cout << number << " pirates ships spawned." << endl;
+
 }
 
 //Iceberg - Complete
