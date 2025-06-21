@@ -422,6 +422,7 @@ int main()
                 //evilEvent6();
                 evilEvents[evilEvent-1]();
                 string t;
+                cout << endl;
                 cout << "Continue?\n> ";
                 cin >> t;
                 system("cls");
@@ -506,17 +507,20 @@ void evilEvent2(){
 
     if(evilDesc == true){
         cout << "Kraken!" << endl;
-        //cout << number << " tentacles spawned." << endl;
+        cout << number << " tentacles spawned." << endl;
     }
     else{
         cout << "Kraken" << endl;
-        //cout << number << " tentacles spawned." << endl;
+        cout << number << " tentacles spawned." << endl;
     }
 }
 
 //Giant Rats Eat Your Food - Complete
 void evilEvent3(){
     //2d6 Giant Rats appear in random rooms across the ship, and you have 10 rounds to kill all of them, otherwise, you lose 5% of your food for each remaining rat, lose 10% food 
+
+    int number = roll(6) + roll(6);
+
     if(evilDesc == true){
         cout << "It's bad." << endl;
         wait(450);
@@ -525,7 +529,8 @@ void evilEvent3(){
         wait(300);
         cout << endl;
         cout << "It" << flush;
-        textDelay("seems we've got rats somewhere on board,",250);
+        string ratLine = "seems we've got " + to_string(number) + " rats somewhere on board,";
+        textDelay(ratLine,250);
         wait(300);
         textDelay("the bad kind!",100);
         cout << endl;
@@ -538,6 +543,7 @@ void evilEvent3(){
     }
     else{
         cout << "Giant Rats" << endl;
+        cout << to_string(number) + " rats spawned." << endl;
     }
     
 }
@@ -567,7 +573,7 @@ void evilEvent4(){
 void evilEvent5(){
     //You got lost at sea, rerolling your destination, and adding 1d4 days to your journey
     if(evilDesc == true){
-        cout << " It's time to finally admit it." << flush;
+        cout << "It's time to finally admit it." << flush;
         wait(1500);
         cout <<" You," << flush;
         wait(500);
@@ -764,7 +770,7 @@ void evilEvent9(){
         }
     }
 
-    //cout << number << " pirates ships spawned." << endl;
+    cout << number << " pirates ships spawned." << endl;
 
 }
 
