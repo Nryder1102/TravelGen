@@ -419,7 +419,6 @@ int main()
                 wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(10);
-                //evilEvent6();
                 evilEvents[evilEvent-1]();
                 string t;
                 cout << endl;
