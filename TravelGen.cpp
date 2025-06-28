@@ -54,9 +54,14 @@ void evilEvent7();
 void evilEvent8();
 void evilEvent9();
 void evilEvent10();
+void evilEvent11();
+void evilEvent12();
+void evilEvent13();
+void evilEvent14();
+void evilEvent15();
 
 //Evil Events List
-vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evilEvent5,evilEvent6,evilEvent7,evilEvent8,evilEvent9,evilEvent10};
+vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evilEvent5,evilEvent6,evilEvent7,evilEvent8,evilEvent9,evilEvent10,evilEvent11,evilEvent12,evilEvent13,evilEvent14,evilEvent15};
 //Names (Figure out how to grab from external file)
 vector<string> names;
 //Nicknames
@@ -410,8 +415,10 @@ int main()
 
         //Incident check
         bool safeTravels = true;
+        
         //Roll a d100
         int incident = roll(100);
+
         //If the roll is in the list of Evil Numbers, roll an Evil Event and disable Safe Message
         for(int num : evilNum){
             if(incident == num){
@@ -812,6 +819,61 @@ void evilEvent10(){
     }
     else{
         cout << "Iceberg" << endl;
+    }
+}
+
+//Rot
+void evilEvent11(){
+    //Rot is found in your food storage, resulting in 1d20% food loss
+    if(evilDesc == true){
+        cout << "Rot" << endl;
+    }
+    else{
+        cout << "Rot" << endl;
+    }
+}
+
+//Research Fire
+void evilEvent12(){
+    //A fire breaks out in one of the research rooms, resulting in 1d20% research loss
+    if(evilDesc == true){
+        cout << "Research Fire" << endl;
+    }
+    else{
+        cout << "Research Fire" << endl;
+    }
+}
+
+//Spontaneous Combustion (Boiler)
+void evilEvent13(){
+    //One of the boilers explodes, removing all upgrades and doing 1d4 damage to the ship
+    if(evilDesc == true){
+        cout << "Boiler Explodes, " + to_string(roll(4))  + " damage" << endl;
+    }
+    else{
+        cout << "Boiler Explodes, " + to_string(roll(4))  + " damage" << endl;
+    }
+}
+
+//Spontaneous Combustion (Crew)
+void evilEvent14(){
+    //1d4 crew resource spontaneously combust
+    if(evilDesc == true){
+        cout << "Spontaneously Combust. " + to_string(roll(4))  + " crew" << endl;
+    }
+    else{
+        cout << "Spontaneously Combust. " + to_string(roll(4))  + " crew" << endl;
+    }
+}
+
+//Arson
+void evilEvent15(){
+    //Lose 1d20% of wood, and a room is damaged by 1 level
+    if(evilDesc == true){
+        cout << "Arson" << endl;
+    }
+    else{
+        cout << "Arson" << endl;
     }
 }
 
