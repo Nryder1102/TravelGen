@@ -868,7 +868,7 @@ void evilEvent14(){
 
 //Arson
 void evilEvent15(){
-    //Lose 1d20% of wood, and a room is damaged by 1 level
+    //Lose 1d20% of wood, and a room is damaged by 1 level. The specialist is yours to deal with
     if(evilDesc == true){
         cout << "Arson" << endl;
     }
