@@ -68,7 +68,7 @@ vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evi
 
 
 //Good Numbers
-vector<int> goodNum = {2, 3, 22, 23, 33, 42, 43, 52, 62, 63, 73, 83, 92};
+vector<int> goodNum = {2, 3, 22, 23, 32, 33, 42, 43, 52, 53, 62, 63, 72, 73, 82, 83, 92, 93};
 
 //Good Events
 void goodEvent1();
