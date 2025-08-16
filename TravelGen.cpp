@@ -19,6 +19,8 @@ bool suggestions = true;
 bool hiddenFlag = false;
 //Fun Evil Descriptions
 bool evilDesc = true;
+//Fun Good Descriptions
+bool goodDesc = true;
 
 
 //Loops
@@ -31,15 +33,16 @@ bool travelLoop = true;
 //Main Encounter Types
 vector<string> encounters = {"Combat","Shop","Resource","Event"};
 //Combat Flavors
-vector<string> combat = {"Pushover","Competent","Elite"};
+vector<string> combat = {"Pushover","Competent","Elite","Elite (Nemesis)"};
 //Shop Flavors
 vector<string> shop = {"Resources","Upgrades","Specialist","Black Market","Evil","Random","Items","Magical"};
 //Resource Flavors
 vector<string> resource = {"Money","Food","Building Materials","Crew","Random","None"};
 //Event Flavors
-vector<string> event = {"Positive","Negative","Random","Stranded Specialist"};
+vector<string> event = {"Positive","Negative","Random","Stranded Specialist","Beached Boat"};
 //Hidden Chance
 vector<string> hiddenChance = {"false","false","true"};
+
 //Evil Numbers
 vector<int> evilNum = {1, 11, 21, 31, 41, 51, 61, 71, 81, 91};
 //Evil Events
@@ -62,6 +65,21 @@ void evilEvent15();
 
 //Evil Events List
 vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evilEvent5,evilEvent6,evilEvent7,evilEvent8,evilEvent9,evilEvent10,evilEvent11,evilEvent12,evilEvent13,evilEvent14,evilEvent15};
+
+
+//Good Numbers
+vector<int> goodNum = {2, 3, 22, 23, 33, 42, 43, 52, 62, 63, 73, 83, 92};
+
+//Good Events
+void goodEvent1();
+void goodEvent2();
+void goodEvent3();
+void goodEvent4();
+void goodEvent5();
+
+//Good Events List
+vector<void (*)()> goodEvents = {goodEvent1};
+
 //Names (Figure out how to grab from external file)
 vector<string> names;
 //Nicknames
@@ -290,6 +308,12 @@ int main()
         evilDesc = false;
     }
 
+    if(settings[4] == "true"){
+        goodDesc = true;
+    }else{
+        goodDesc = false;
+    }
+
     //Generate random seed
     srand(time(0));
 
@@ -425,7 +449,7 @@ int main()
                 cout << "\nCaptain." << endl;
                 wait(2000);
                 safeTravels = false;
-                int evilEvent = roll(10);
+                int evilEvent = roll(evilEvents.size());
                 evilEvents[evilEvent-1]();
                 string t;
                 cout << endl;
@@ -436,6 +460,23 @@ int main()
                 break;
             }
         }
+
+        //If the roll is in the list of Good Numbers, roll a Good Event
+        for(int num : goodNum){
+            if(incident == num){
+                cout << "\nCaptain." << endl;
+                wait(2000);
+                int goodEvent = roll(goodEvents.size());
+                goodEvents[goodEvent-1]();
+                string t;
+                cout << endl;
+                cout << "Continue?\n> ";
+                cin >> t;
+                system("cls");
+                break;
+            }
+        }
+
         //Safe Message :)
         //You made it :)
         if(safeTravels == true){cout << "You made it to the " << destination[1] << " " << destination[0] << ", safely, after " << destination[2] << " days!" << endl;}
@@ -876,6 +917,62 @@ void evilEvent15(){
         cout << "Arson" << endl;
     }
 }
+
+//Travelling Merchant
+void goodEvent1(){
+    //travelling Merchant
+    if(goodDesc == true){
+        cout << "You" << flush;
+        textDelay("see a large vessel rapidly approaching your ship from the east.", 250);
+        wait(2000);
+        cout << endl;
+        cout << "It" << flush;
+        textDelay("doesn't appear to be slowing down,",150);
+        wait(1000);
+        cout << " Captain." << endl;
+        wait(3000);
+        cout << "The" << flush;
+        textDelay("ship rapidly outspeeds your attempts to evade it,",100);
+        textDelay("and in a feat of nautical manoeuvring,",50);
+        cout << endl << "it" << flush;
+        textDelay("soon pulls along the side of your ship.",50);
+        wait(1000);
+        cout << endl << "As" << flush;
+        textDelay("the ship grows closer, you begin hearing...",150);
+        cout << endl << "Music?" << endl;
+        wait(1000);
+        cout << "And laughter?" << endl;
+        wait(1000);
+        cout << "\"Captain!" << flush;
+        textDelay("They're lowering a boarding plank! They're going to board us!\"",50);
+        cout << endl;
+        wait(2000);
+        cout << "But," << flush;
+        textDelay("as you and your crew watch the plank lower into position, waiting for enemies to rush onto your deck...",250);
+        cout << endl;
+        wait(2000);
+        cout << "Nothing happens." << endl;
+        wait(2000);
+        cout << "You" << flush;
+        textDelay("hear an indistinct voice yell from the other ship.",150);
+        cout << endl << "\"Friends!\"" << endl;
+        wait(1000);
+        cout << "\"What" << flush;
+        textDelay("are you waiting for? We have wares to sell, and you have money to spend! Come aboard!\"",75);
+        cout << endl;
+        wait(3000);
+        cout << "What" << flush;
+        textDelay("do you do,",500);
+        wait(750);
+        cout << " Captain?" << endl;
+
+    }
+    else{
+        cout << "Travelling Merchant" << endl;
+    }
+}
+
+//Strong Current
 
 
 

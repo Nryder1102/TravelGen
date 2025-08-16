@@ -6,3 +6,5 @@ Hidden Events?
 false
 Evil Descriptions?
 true
+Good Descriptions?
+true
