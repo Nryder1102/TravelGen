@@ -814,7 +814,28 @@ void evilEvent9(){
 
     if(select(hiddenChance) == "true"){
         if(evilDesc == true){
-            cout << "Pirate Raid Night" << endl;
+            cout << "You" << flush;
+            textDelay("are woken in the middle of the night by the sounds of cannon fire.",150);
+            wait(500);
+            cout << "You" << flush;
+            textDelay("quickly rush out of your room, expecting to see the worst, and Captain?",250);
+            wait(1500);
+            cout << "\nIt's" << flush;
+            textDelay("bad.",50);
+            wait(2500);
+            cout << "\nYou" << flush;
+            textDelay("are surrounded, Captain.",75);
+            wait(1000);
+            cout << "\nThere" << flush;
+            string temp = "are " + to_string(number) + " currently surrounding your ship, all firing at you.";
+            textDelay(temp,200);
+            wait(1000);
+            cout << "\nYou" << flush;
+            textDelay("have been taken unaware, Captain.",75);
+            wait(3000);
+            cout << "\nWhat" << flush;
+            textDelay("will you do?",500);
+            cout << endl;
         }
         else{
             cout << "Pirate Raid Night" << endl;
