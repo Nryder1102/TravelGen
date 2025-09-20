@@ -62,9 +62,10 @@ void evilEvent12();
 void evilEvent13();
 void evilEvent14();
 void evilEvent15();
+void evilEvent16();
 
 //Evil Events List
-vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evilEvent5,evilEvent6,evilEvent7,evilEvent8,evilEvent9,evilEvent10,evilEvent11,evilEvent12,evilEvent13,evilEvent14,evilEvent15};
+vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evilEvent5,evilEvent6,evilEvent7,evilEvent8,evilEvent9,evilEvent10,evilEvent11,evilEvent12,evilEvent13,evilEvent14,evilEvent15,evilEvent16};
 
 
 //Good Numbers
@@ -602,7 +603,18 @@ void evilEvent4(){
     int percent = rand()%(25-5)+5;
 
     if(evilDesc == true){
-        cout << "Better Job Offer!" << endl;
+        cout << "One" << flush;
+        textDelay("of your specialists hasn't been seen all day.",200);
+        cout << endl << "You've" << flush;
+        textDelay("called a search for them,",150);
+        wait(200);
+        textDelay("but there's been not one single sign, Captain.",150);
+        wait(1500);
+        cout << endl << "At" << flush;
+        textDelay("least,",50);
+        wait(1000);
+        textDelay("not until you find the note.",300);
+        
     }
     else{
         cout << "Better Job Offer" << endl;
@@ -918,9 +930,68 @@ void evilEvent15(){
     }
 }
 
+//Evil Traders
+void evilEvent16(){
+    //Evil Merchant
+    if(evilDesc == true){
+        cout << "You" << flush;
+        textDelay("see a large vessel rapidly approaching your ship from the east.", 250);
+        wait(2000);
+        cout << endl;
+        cout << "It" << flush;
+        textDelay("doesn't appear to be slowing down,",150);
+        wait(1000);
+        cout << " Captain." << endl;
+        wait(3000);
+        cout << "The" << flush;
+        textDelay("ship rapidly outspeeds your attempts to evade it,",100);
+        textDelay("and in a feat of nautical manoeuvring,",50);
+        cout << endl << "it" << flush;
+        textDelay("soon pulls along the side of your ship.",50);
+        wait(1000);
+        cout << endl << "As" << flush;
+        textDelay("the ship grows closer, you begin hearing...",150);
+        cout << endl << "Music?" << endl;
+        wait(1000);
+        cout << "And laughter?" << endl;
+        wait(1000);
+        cout << "\"Captain!" << flush;
+        textDelay("They're lowering a boarding plank! They're going to board us!\"",50);
+        cout << endl;
+        wait(2000);
+        cout << "But," << flush;
+        textDelay("as you and your crew watch the plank lower into position, waiting for enemies to rush onto your deck...",250);
+        cout << endl;
+        wait(2000);
+        cout << "Nothing happens." << endl;
+        wait(2000);
+        cout << "You" << flush;
+        textDelay("hear an indistinct voice yell from the other ship.",150);
+        cout << endl << "\"Ha ha!\"" << endl;
+        wait(1000);
+        cout << "\"What" << flush;
+        textDelay("are you waiting for, Gents?",75);
+        wait(1000);
+        cout << "\nAn" << flush;
+        textDelay("invitation? They've got loot for us to nab, get them!\"",75);
+        cout << endl;
+        wait(1000);
+        cout << "Enemies" << flush;
+        textDelay("soon begin rushing onto your deck, intent on taking everything not nailed down.",75);
+        wait(3000);
+        cout << "What" << flush;
+        textDelay("do you do,",500);
+        wait(750);
+        cout << " Captain?" << endl;
+    }
+    else{
+        cout << "Fake Merchant" << endl;
+    }
+}
+
 //Travelling Merchant
 void goodEvent1(){
-    //travelling Merchant
+    //Travelling Merchant
     if(goodDesc == true){
         cout << "You" << flush;
         textDelay("see a large vessel rapidly approaching your ship from the east.", 250);
