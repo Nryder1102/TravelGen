@@ -442,7 +442,7 @@ int main()
         bool safeTravels = true;
         
         //Roll a d100
-        int incident = 1;
+        int incident = roll(100);
 
         //If the roll is in the list of Evil Numbers, roll an Evil Event and disable Safe Message
         for(int num : evilNum){
@@ -451,8 +451,7 @@ int main()
                 wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(evilEvents.size());
-                //evilEvents[evilEvent-1]();
-                evilEvent9();
+                evilEvents[evilEvent-1]();
                 string t;
                 cout << endl;
                 cout << "Continue?\n> ";
