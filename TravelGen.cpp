@@ -442,7 +442,7 @@ int main()
         bool safeTravels = true;
         
         //Roll a d100
-        int incident = roll(100);
+        int incident = 1;
 
         //If the roll is in the list of Evil Numbers, roll an Evil Event and disable Safe Message
         for(int num : evilNum){
@@ -451,7 +451,8 @@ int main()
                 wait(2000);
                 safeTravels = false;
                 int evilEvent = roll(evilEvents.size());
-                evilEvents[evilEvent-1]();
+                //evilEvents[evilEvent-1]();
+                evilEvent9();
                 string t;
                 cout << endl;
                 cout << "Continue?\n> ";
@@ -535,7 +536,7 @@ void evilEvent1(){
     //Random part of the deck gets attacked by a Siren, with all rooms in a 1-room radius hearing the song
     //DC 13 Wisdom Save to not be hypnotized by the Siren's song
     //By the time the Captain becomes aware of the problem, everyone who's been hypnotized has already made it to the Siren's side, and will fight for them
-    //You have 10 rounds to kill the Siren before it takes off, bringing everyone who fell under it's song with it
+    //You have 10 rounds (or less) to kill the Siren before it takes off, bringing everyone who fell under it's song with it
     //An Expedition may be launched to regain the stolen, if any, people
     if(evilDesc == true){
         cout << "Siren!" << endl;
@@ -549,7 +550,7 @@ void evilEvent1(){
 //Kraken Attack
 void evilEvent2(){
     //1d6+2 Tentacles attack randomly on the deck
-    //You have 10 rounds to kill all the tentacles, before the ship takes 1HP damage for each remaining tentacle
+    //You have 10 (or less) rounds to kill all the tentacles, before the ship takes 1HP damage for each remaining tentacle
 
     int number = roll(6)+2;
 
@@ -565,7 +566,7 @@ void evilEvent2(){
 
 //Giant Rats Eat Your Food - Complete
 void evilEvent3(){
-    //2d6 Giant Rats appear in random rooms across the ship, and you have 10 rounds to kill all of them, otherwise, you lose 5% of your food for each remaining rat, lose 10% food 
+    //2d6 Giant Rats appear in random rooms across the ship, and you have 10 rounds (or less) to kill all of them, otherwise, you lose 5% of your food for each remaining rat, lose 10% food 
 
     int number = roll(6) + roll(6);
 
@@ -596,15 +597,17 @@ void evilEvent3(){
     
 }
 
-//Dragon Recruitment
+//Dragon Recruitment - Complete
 void evilEvent4(){
     //One of your specialists got an amazing job offer at your last stop, and has left your crew, along with 5%-25% of all your various resources. These resources and the specialist join the dragon's hoard, and can be regained if the dragon is defeated
+    //Generate a new dragon if none is active, otherwise just do above
 
     int percent = rand()%(25-5)+5;
 
     if(evilDesc == true){
         cout << "One" << flush;
         textDelay("of your specialists hasn't been seen all day.",200);
+        wait(300);
         cout << endl << "You've" << flush;
         textDelay("called a search for them,",150);
         wait(200);
@@ -614,18 +617,40 @@ void evilEvent4(){
         textDelay("least,",50);
         wait(1000);
         textDelay("not until you find the note.",300);
+        wait(2000);
+        cout << "\n\"Sorry" << flush;
+        wait(100);
+        cout << " Cap,\"" << endl;
+        wait(1000);
+        cout << "\"Unfortunately," << flush;
+        wait(500);
+        textDelay("this just isn't going to work out anymore.\"",100);
+        wait(1500);
+        cout << "\n\"Y'see," << flush;
+        wait(200);
+        textDelay("I've gotten a \033[3mmuch\033[0m better offer, Cap.\"",150);
+        wait(1000);
+        cout << "\n\"And" << flush;
+        string temp = "it only took " + to_string(percent) + "% of your resources!\"";
+        textDelay(temp,100);
+        wait(1300);
+        cout << "\n\"Soooooo.......," << flush;
+        textDelay("bye bye!\"", 500);
+        cout << "\nCaptain.";
+        wait(1500);
+        cout << "\nThey're " << flush;
+        wait(500);
+        cout << "gone.";
+        cout << endl;
         
     }
     else{
         cout << "Better Job Offer" << endl;
+        cout << percent << "% loss of resources." << endl;
     }
 
-    cout << percent << "% loss of resources." << endl;
-
     
 
-    
-    
 }
 
 //Lost - Complete
@@ -768,7 +793,7 @@ void evilEvent7(){
 
 //Embezzlement - Complete
 void evilEvent8(){
-    //A specialist was caught embezzling money, unfortunately, the money is gone, and so is the specialist. Pass an averaged investigation check, DC of whatever the specialist rolled for Stealth to find them and get some of your money back, otherwise, it's gone, and so is the specialist
+    //A specialist was caught embezzling money, unfortunately, the money is gone, and so is the specialist. Pass an averaged investigation check, DC of whatever the specialist rolled for Stealth +5 to find them and your money back, otherwise, it's gone, and so is the specialist. This works on death saving throw logic, with the same rules applying to the players, if *any* player rolls a nat 1 or a nat 20, that takes precedence over the average, otherwise go with the average. If the players fail all three checks, the specialist and money get away, otherwise, the players have a chance to confront the specialist.
 
     int percent = rand()%(15-5)+5;
 
@@ -796,7 +821,6 @@ void evilEvent8(){
         textDelay("it's too late!\"",500);
         cout << endl;
 
-
     }
     else{
         cout << "Embezzlement" << endl;
@@ -806,7 +830,7 @@ void evilEvent8(){
     
 }
 
-//Pirate Raid
+//Pirate Raid - Complete
 void evilEvent9(){
     //2d4 pirate ships attack, with the pirates getting an ambush round if during night
 
@@ -817,17 +841,14 @@ void evilEvent9(){
             cout << "You" << flush;
             textDelay("are woken in the middle of the night by the sounds of cannon fire.",150);
             wait(500);
-            cout << "You" << flush;
+            cout << "\nYou" << flush;
             textDelay("quickly rush out of your room, expecting to see the worst, and Captain?",250);
             wait(1500);
             cout << "\nIt's" << flush;
             textDelay("bad.",50);
             wait(2500);
-            cout << "\nYou" << flush;
-            textDelay("are surrounded, Captain.",75);
-            wait(1000);
             cout << "\nThere" << flush;
-            string temp = "are " + to_string(number) + " currently surrounding your ship, all firing at you.";
+            string temp = "are " + to_string(number) + " ships surrounding your craft, all currently firing at you.";
             textDelay(temp,200);
             wait(1000);
             cout << "\nYou" << flush;
@@ -839,18 +860,55 @@ void evilEvent9(){
         }
         else{
             cout << "Pirate Raid Night" << endl;
+            cout << number << " pirates ships spawned." << endl;
         }
     }else{
         if(evilDesc == true){
-            //Things are not going well for you, at the moment. Everything was going fine, at first, until one of your deckhands ran into the bridge, shouting "Captain! Captain! Look! On the horizon! Quick!" You quickly begin scanning the horizon, until finally, you see them. 2d4 pirate ships sailing straight for you. There's no way out. It's a fight!
-            cout << "Pirate Raid Day" << endl;
+            cout << "Things" << flush;
+            textDelay("are not going well for you, at the moment.",250);
+            wait(750);
+            cout << "\nEverything" << flush;
+            textDelay("was going fine,",175);
+            wait(300);
+            textDelay("at first.",75);
+            wait(300);
+            cout << "\nAt" << flush;
+            textDelay("least until one of you deckhands ran onto the bridge.",100);
+            wait(1300);
+            cout << "\n\"Captain!" << flush;
+            wait(150);
+            cout << " Captain!" << flush;
+            wait(150);
+            cout << " Look!" << flush;
+            wait(50);
+            cout << " On" << flush;
+            textDelay("the horizon!",30);
+            wait(150);
+            cout << " Quick!\"" << endl;
+            wait(1400);
+            cout << "You" << flush;
+            textDelay("quickly begin scanning the horizon,",50);
+            wait(100);
+            textDelay("until you finally see them.",50);
+            cout << endl;
+            cout << number << flush;
+            textDelay("pirate ships sailing straight for you.",50);
+            wait(2000);
+            cout << "\nThere's" << flush;
+            textDelay("no way out.",50);
+            wait(3000);
+            cout << "\nWhat" << flush;
+            textDelay("will you do, Captain?",500);
+            cout << endl;
         }
         else{
             cout << "Pirate Raid Day" << endl;
+            cout << number << " pirates ships spawned." << endl;
         }
+        
     }
 
-    cout << number << " pirates ships spawned." << endl;
+    
 
 }
 
@@ -951,7 +1009,7 @@ void evilEvent15(){
     }
 }
 
-//Evil Traders
+//Evil Traders - Complete
 void evilEvent16(){
     //Evil Merchant
     if(evilDesc == true){
@@ -1010,7 +1068,7 @@ void evilEvent16(){
     }
 }
 
-//Travelling Merchant
+//Travelling Merchant - Complete
 void goodEvent1(){
     //Travelling Merchant
     if(goodDesc == true){
