@@ -63,6 +63,7 @@ void evilEvent13();
 void evilEvent14();
 void evilEvent15();
 void evilEvent16();
+//void evilEvent17();
 
 //Evil Events List
 vector<void (*)()> evilEvents = {evilEvent1,evilEvent2,evilEvent3,evilEvent4,evilEvent5,evilEvent6,evilEvent7,evilEvent8,evilEvent9,evilEvent10,evilEvent11,evilEvent12,evilEvent13,evilEvent14,evilEvent15,evilEvent16};
@@ -79,7 +80,7 @@ void goodEvent4();
 void goodEvent5();
 
 //Good Events List
-vector<void (*)()> goodEvents = {goodEvent1};
+vector<void (*)()> goodEvents = {goodEvent1,goodEvent2};
 
 //Names (Figure out how to grab from external file)
 vector<string> names;
@@ -953,12 +954,30 @@ void evilEvent10(){
     }
 }
 
-//Rot
+//Rot - Complete
 void evilEvent11(){
     //Rot is found in your food storage, resulting in 1d20% food loss
     if(evilDesc == true){
-        cout << "Rot" << endl;
-    }
+        cout << "The" << flush;
+        textDelay("news this day brings is not good.",150);
+        wait(350);
+        cout << endl << "You've" << flush;
+        textDelay("just gotten reports of rot being found in your food stores,",250);
+        cout << "Captain." << endl;
+        wait(250); 
+        cout << "It's" << flush;
+        textDelay("dire. There's whole crates of unsalvageable food.",300);
+        wait(400);
+        cout << endl << "This" << flush;
+        textDelay("is a crisis, we must stop the spread.",250);
+        wait(350);
+        cout << endl << "If" << flush;
+        textDelay("the rot is allowed to spread, we soon will have nothing to eat.",300);
+        wait(500);
+        cout << endl << "What" << flush;
+        textDelay("will you do, Captain?", 750);
+        cout << endl;
+        }
     else{
         cout << "Rot" << endl;
     }
@@ -975,14 +994,39 @@ void evilEvent12(){
     }
 }
 
-//Spontaneous Combustion (Boiler)
+//Spontaneous Combustion (Boiler) - Complete
 void evilEvent13(){
     //One of the boilers explodes, removing all upgrades and doing 1d4 damage to the ship
     if(evilDesc == true){
-        cout << "Boiler Explodes, " + to_string(roll(4))  + " damage" << endl;
+        cout << "You" << flush;
+        textDelay("are dozing off in the bridge.",150); 
+        cout << endl;
+        wait(1000);
+        cout << "Everything" << flush;
+        textDelay("has been normal.",250); 
+        cout << endl;
+        wait(550);
+        cout << "Peaceful," << flush;
+        textDelay("even.",200); 
+        cout << endl;
+        wait(750);
+        cout << "That's" << flush; 
+        textDelay("when you're awoken by the explosion.",100);
+        cout << endl;
+        wait(750);
+        cout << "\"Captain!" << flush; 
+        textDelay("One of the boilers!",50);
+        wait(150);
+        textDelay("It's exploded!\"",50);
+        wait(2000);
+        cout << endl;
+        cout << "\"What" << flush; 
+        textDelay("do we do, Captain!?\"",500);
+        cout << endl;
+        cout << "Boiler Explodes: " + to_string(roll(4))  + " damage" << endl;
     }
     else{
-        cout << "Boiler Explodes, " + to_string(roll(4))  + " damage" << endl;
+        cout << "Boiler Explodes: " + to_string(roll(4))  + " damage" << endl;
     }
 }
 
@@ -990,7 +1034,8 @@ void evilEvent13(){
 void evilEvent14(){
     //1d4 crew resource spontaneously combust
     if(evilDesc == true){
-        cout << "Spontaneously Combust. " + to_string(roll(4))  + " crew" << endl;
+
+        cout << "Spontaneously Combust: " + to_string(roll(4))  + " crew" << endl;
     }
     else{
         cout << "Spontaneously Combust. " + to_string(roll(4))  + " crew" << endl;
@@ -1010,7 +1055,8 @@ void evilEvent15(){
 
 //Evil Traders - Complete
 void evilEvent16(){
-    //Evil Merchant
+    //Evil Merchants
+    //An amount of boarders spawn from a boarding plank onto your top deck, and a large ship spawns next to you
     if(evilDesc == true){
         cout << "You" << flush;
         textDelay("see a large vessel rapidly approaching your ship from the east.", 250);
@@ -1056,6 +1102,7 @@ void evilEvent16(){
         wait(1000);
         cout << "Enemies" << flush;
         textDelay("soon begin rushing onto your deck, intent on taking everything not nailed down.",75);
+        cout << endl;
         wait(3000);
         cout << "What" << flush;
         textDelay("do you do,",500);
@@ -1066,6 +1113,11 @@ void evilEvent16(){
         cout << "Fake Merchant" << endl;
     }
 }
+
+
+
+
+//GOOD EVENTS
 
 //Travelling Merchant - Complete
 void goodEvent1(){
@@ -1120,6 +1172,25 @@ void goodEvent1(){
         cout << "Travelling Merchant" << endl;
     }
 }
+
+//False Alarm - Complete
+void goodEvent2(){
+    //Rolls a bad event but adds a "Just a Bad Dream" to the end
+        int fakeEvent = roll(evilEvents.size());
+        evilEvents[fakeEvent-1]();
+        wait(2000);
+        textDelay(".....",1000);
+        cout << endl;
+        wait(2000);
+        cout << "And" << flush;
+        textDelay("then you wake up.",100);
+        cout << endl;
+        wait(1000);
+        cout << "Just" << flush;
+        textDelay("a bad dream, Captain.",500);
+        cout << endl;
+}
+
 
 //Strong Current
 
